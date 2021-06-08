@@ -1,6 +1,5 @@
 $(document).ready(function () {
     $('.tabs').tabs();
-    let modalUserEdit = document.querySelector('#modal3');
 });
 let users = [{
     id: 1,
@@ -23,6 +22,7 @@ let users = [{
 let container = document.querySelector(".users_container");
 
 let renderUsers = (array) => {
+    container.innerHTML = '';
     users.forEach((user, index) => {
         if (index === 0) {
             container.innerHTML = `<ul>
@@ -53,6 +53,7 @@ let renderUsers = (array) => {
         `
     })
 }
+let modalUserEdit = document.querySelector('#modal3');
 
 let editUser = () => {
     let editBtns = document.querySelectorAll('.user-edit');
@@ -67,6 +68,8 @@ let editUser = () => {
             saveBtn.addEventListener('click', () => {
                 currentUser.fullName = nameInput.value;
                 currentUser.phone = phoneInput.value;
+                close_modal(modalUserEdit)
+                renderUsers(users);
             })
         })
     })
