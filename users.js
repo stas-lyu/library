@@ -55,6 +55,7 @@ let renderUsers = (array) => {
 }
 let modalUserEdit = document.querySelector('#modal3');
 
+
 let editUser = () => {
     let editBtns = document.querySelectorAll('.user-edit');
     let nameInput = document.querySelector('#userName');
@@ -64,15 +65,19 @@ let editUser = () => {
     editBtns.forEach((btn) => {
         btn.addEventListener('click', (e) => {
             let index = btn.getAttribute('data-user');
-            let currentUser = users[index - 1];
-            saveBtn.addEventListener('click', () => {
-                currentUser.fullName = nameInput.value;
-                currentUser.phone = phoneInput.value;
-                close_modal(modalUserEdit)
-                renderUsers(users);
-            })
+            saveBtn.setAttribute('data-user', `${index}`);
+            // saveUser(currentUser, index, saveBtn, nameInput, phoneInput);
         })
     })
+
+    saveBtn.addEventListener('click', (e) => {
+        let currentUser = users[index - 1];
+        saveBtn.getAttribute('data-user');
+        currentUser.fullName = nameInput.value;
+        currentUser.phone = phoneInput.value;
+        renderUsers(users);
+        close_modal(modalUserEdit);
+    });
 }
 
 renderUsers(users);
