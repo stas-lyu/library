@@ -66,6 +66,8 @@ let editUser = () => {
         btn.addEventListener('click', (e) => {
             let index = btn.getAttribute('data-user');
             saveBtn.setAttribute('data-user', `${index}`);
+            nameInput.value = '';
+            phoneInput.value = '';
         })
     })
 
@@ -74,8 +76,6 @@ let editUser = () => {
         let currentUser = users[index - 1];
         currentUser.fullName = nameInput.value;
         currentUser.phone = phoneInput.value;
-        nameInput.value = '';
-        phoneInput.value = '';
         renderUsers(users);
         close_modal(modalUserEdit);
         editUser();
@@ -85,3 +85,7 @@ let editUser = () => {
 renderUsers(users);
 
 editUser();
+
+//Modal Window
+//Button add new User
+//Function
