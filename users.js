@@ -56,9 +56,18 @@ let renderUsers = (array) => {
 
 let editUser = () => {
     let editBtns = document.querySelectorAll('.user-edit');
+    let nameInput = document.querySelector('#userName');
+    let phoneInput = document.querySelector('#userPhone');
+    let saveBtn = document.querySelector('#userSave');
+
     editBtns.forEach((btn) => {
         btn.addEventListener('click', (e) => {
-            console.log(e.target);
+            let index = btn.getAttribute('data-user');
+            let currentUser = users[index - 1];
+            saveBtn.addEventListener('click', () => {
+                currentUser.fullName = nameInput.value;
+                currentUser.phone = phoneInput.value;
+            })
         })
     })
 }
