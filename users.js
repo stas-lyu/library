@@ -71,12 +71,13 @@ let editUser = () => {
     })
 
     saveBtn.addEventListener('click', (e) => {
+        let index = saveBtn.getAttribute('data-user');
         let currentUser = users[index - 1];
-        saveBtn.getAttribute('data-user');
         currentUser.fullName = nameInput.value;
         currentUser.phone = phoneInput.value;
         renderUsers(users);
         close_modal(modalUserEdit);
+        editUser();
     });
 }
 
